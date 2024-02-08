@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            padding: 20px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2><center>Number Checker</center></h2>
+
+        <label for="inputNumber">Enter a positive number: </label>
+        <input type="number" id="inputNumber" placeholder="Enter a number">
+
+        <button onclick="checkNumber()">Check</button>
+
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function checkNumber() {
+            // Get user input
+            var inputNumber = parseInt(document.getElementById('inputNumber').value);
+
+            // Check if the input is valid
+            if (isNaN(inputNumber) || inputNumber <= 0) {
+                alert('Please enter a valid positive number.');
+                return;
+            }
+
+            // Check if the number is a multiple of 3 or 7
+            var isMultipleOf3 = inputNumber % 3 === 0;
+            var isMultipleOf7 = inputNumber % 7 === 0;
+
+            // Display the result
+            if (isMultipleOf3 && isMultipleOf7) {
+                document.getElementById('result').innerHTML = inputNumber + ' is a multiple of both 3 and 7.';
+            } else if (isMultipleOf3) {
+                document.getElementById('result').innerHTML = inputNumber + ' is a multiple of 3 but not a multiple of 7.';
+            } else if (isMultipleOf7) {
+                document.getElementById('result').innerHTML = inputNumber + ' is a multiple of 7 but not  a multiple of 3.';
+            } else {
+                document.getElementById('result').innerHTML = inputNumber + ' is not a multiple of either 3 or 7.';
+            }
+        }
+    </script>
+</body>
+
+</html>

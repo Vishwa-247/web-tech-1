@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 10;
+        }
+
+        .calculator-container {
+            padding: 20px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+        }
+
+        .result-box {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        label {
+            display: inline-block;
+            margin-bottom: 10px;
+            margin-right: 10px; /* Add margin to separate label and input */
+        }
+
+        input[type="number"] {
+            width: 150px; /* Set width for consistency */
+        }
+
+        button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 9px 3px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition-duration: 0.4s;
+        }
+
+        button:hover {
+            background-color: #bdbdbd;
+        }
+
+        button:active {
+            background-color: #acacac;
+            transform: translateY(4px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calculator-container">
+        <h2><center> Simple Calculator </center></h2>
+
+        <label for="num1">Enter first number: </label>
+        <input type="number" id="num1"><br>
+
+        <label for="num2">Enter second number: </label>
+        <input type="number" id="num2"><br>
+
+        <button onclick="calculate('addition')">Addition</button>
+        <button onclick="calculate('subtraction')">Subtraction</button>
+        <button onclick="calculate('multiplication')">Multiplication</button>
+        <button onclick="calculate('division')">Division</button>
+
+        <div class="result-box" id="result"></div>
+    </div>
+
+    <script>
+        function calculate(operation) {
+            var num1 = parseFloat(document.getElementById("num1").value);
+            var num2 = parseFloat(document.getElementById("num2").value);
+            var result;
+
+            switch (operation) {
+                case 'addition':
+                    result = num1 + num2;
+                    break;
+                case 'subtraction':
+                    result = num1 - num2;
+                    break;
+                case 'multiplication':
+                    result = num1 * num2;
+                    break;
+                case 'division':
+                    result = num1 / num2;
+                    break;
+                default:
+                    result = 'Invalid operation';
+            }
+
+            document.getElementById("result").innerText = operation.charAt(0).toUpperCase() + operation.slice(1) + ': ' + result;
+        }
+    </script>
+
+</body>
+</html>
